@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  let [contador, setContador] = useState(0);
+
+  const aumenta = function () {
+    setContador((estadoantigo) => estadoantigo + 1);
+  };
+
+  const diminui = function () {
+    setContador((estadoantigo) => estadoantigo - 1);
+  };
+
+  const zera = function () {
+    setContador(0);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>React Counter</h1>
+      <h2>{contador}</h2>
+      <div className="ButtonHolder">
+        <button className="btn b-plus" onClick={aumenta}>
+          +1
+        </button>
+        <button className="btn b-minus" onClick={diminui}>
+          -1
+        </button>
+        <button className="btn b-zero" onClick={zera}>
+          0
+        </button>
+      </div>
     </div>
   );
 }
